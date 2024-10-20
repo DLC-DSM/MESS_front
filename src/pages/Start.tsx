@@ -50,10 +50,19 @@ const FadeIn = keyframes`
     }
 `
 
+const Slide = keyframes`
+    0%{
+        transform: translateY(50px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+`
+
 const BackgroundSvg = styled.div`
     width: 100%;
     height: 100vh;
-    animation: ${FadeIn} 2s;
+    animation: ${FadeIn} 3s;
 `
 
 const Container = styled.div`
@@ -75,6 +84,7 @@ const LogoWrapper = styled.div`
 `
 
 const LogoContainer = styled.div`
+    animation: ${Slide} 1.5s;
     width: 100%;
     height: 50%;
     display: flex;
