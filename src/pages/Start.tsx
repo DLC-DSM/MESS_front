@@ -11,6 +11,10 @@ function Start() {
         navigate("/login")
     }
 
+    const signupHandler = () => {
+        navigate("/signup")
+    }
+
     return (
         <>
             <Background>
@@ -27,7 +31,9 @@ function Start() {
                         </LogoContainer>
 
                         <ButtonContainer>
-                            <ToSignupButton>회원가입</ToSignupButton>
+                            <ToSignupButton onClick={signupHandler}>
+                                회원가입
+                            </ToSignupButton>
                             <Line />
                             <ToLoginButton onClick={loginHandler}>
                                 로그인

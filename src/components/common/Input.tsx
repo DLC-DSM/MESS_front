@@ -69,8 +69,8 @@ const Label = styled.label`
 
 const InputWrapper = styled.div`
     width: ${({ width }) => `${width}px`};
-    background: ${Colors.Gray100};
-    border: 1px solid ${Colors.Gray400};
+    background: ${Colors.Gray50};
+    border: 2px solid ${Colors.Gray300};
     border-radius: 10px;
     display: flex;
     justify-content: start;
@@ -96,7 +96,7 @@ const Icon = styled.p`
     margin-left: auto;
     width: 30px;
     height: 30px;
-    margin: 0 5px;
+    margin: 0 5px 0 auto;
     font-size: 20px;
     display: flex;
     justify-content: center;
