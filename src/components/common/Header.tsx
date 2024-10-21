@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import Colors from "../style/colors"
-import Logo from "../assets/logo"
+import Colors from "../../style/colors"
+import Logo from "../../assets/logo"
 import { IoMdPerson } from "react-icons/io"
 
 function Header() {
