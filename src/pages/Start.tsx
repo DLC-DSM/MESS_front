@@ -2,8 +2,15 @@ import styled, { keyframes } from "styled-components"
 import Colors from "../style/colors"
 import BackgroundItems from "../assets/background"
 import Logo from "../assets/logo"
+import { useNavigate } from "react-router-dom"
 
 function Start() {
+    const navigate = useNavigate()
+
+    const loginHandler = () => {
+        navigate("/login")
+    }
+
     return (
         <>
             <Background>
@@ -22,7 +29,9 @@ function Start() {
                         <ButtonContainer>
                             <ToSignupButton>회원가입</ToSignupButton>
                             <Line />
-                            <ToLoginButton>로그인</ToLoginButton>
+                            <ToLoginButton onClick={loginHandler}>
+                                로그인
+                            </ToLoginButton>
                         </ButtonContainer>
                     </Container>
                     <BackgroundItems />
