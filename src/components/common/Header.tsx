@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Colors from "../../style/colors"
 import Logo from "../../assets/logo"
 import { IoMdPerson } from "react-icons/io"
+import { BsBellFill } from "react-icons/bs"
 
 function Header() {
     return (
@@ -18,9 +19,14 @@ function Header() {
                         <Button>상점</Button>
                     </ButtonContainer>
 
-                    <Person>
-                        <IoMdPerson />
-                    </Person>
+                    <IconContainer>
+                        <Alarm>
+                            <BsBellFill />
+                        </Alarm>
+                        <Person>
+                            <IoMdPerson />
+                        </Person>
+                    </IconContainer>
                 </Container>
             </Background>
         </>
@@ -69,8 +75,15 @@ const Button = styled.button`
     font-weight: 550;
 `
 
-const Person = styled.div`
+const IconContainer = styled.div`
     margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+`
+
+const Person = styled.div`
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -80,5 +93,16 @@ const Person = styled.div`
     align-items: center;
     border-radius: 15px;
     background: ${Colors.Gray200};
+    color: ${Colors.Gray500};
+`
+
+const Alarm = styled.div`
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
     color: ${Colors.Gray500};
 `

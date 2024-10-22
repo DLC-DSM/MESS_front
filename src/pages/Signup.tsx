@@ -12,6 +12,10 @@ function Signup() {
         navigate("/login")
     }
 
+    const submitHandler = () => {
+        navigate("/home")
+    }
+
     return (
         <>
             <Background>
@@ -48,7 +52,7 @@ function Signup() {
                         width={450}
                     />
 
-                    <SubmitButton>회원가입</SubmitButton>
+                    <SubmitButton onClick={submitHandler}>회원가입</SubmitButton>
                     <Ask>
                         이미 회원이신가요?{" "}
                         <Accent onClick={loginHandler}>로그인</Accent>
