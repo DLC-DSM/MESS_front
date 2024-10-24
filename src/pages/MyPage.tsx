@@ -5,6 +5,7 @@ import { MdPerson } from "react-icons/md"
 import { RiPencilFill } from "react-icons/ri"
 import { useState } from "react"
 import RUReady from "../assets/RUReady"
+import Friend from "../components/myPage/Friend"
 
 function MyPage() {
     const [friendList, setFriendList] = useState<Boolean>(false)
@@ -58,6 +59,33 @@ function MyPage() {
 
     let all = [friendList, addFriend, roomList, addRoom]
 
+    const friends = [
+        {
+            nickname: "서지유",
+            introduce: "HelloWorld!",
+        },
+        {
+            nickname: "이현규",
+            introduce: "HelloWorld!",
+        },
+        {
+            nickname: "최정우",
+            introduce: "ByeWorld ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ",
+        },
+        {
+            nickname: "김문지",
+            introduce: "HelloWorld!",
+        },
+        {
+            nickname: "양병건",
+            introduce: "HelloWorld!",
+        },
+        {
+            nickname: "감귤",
+            introduce: "ㅇㅅㅇ",
+        },
+    ]
+
     return (
         <>
             <Background>
@@ -102,6 +130,20 @@ function MyPage() {
                     <ItemContainer>
                         <RUReady />
                     </ItemContainer>
+                )}
+
+                {friendList && (
+                    <>
+                        {friends.map((v) => {
+                            return (
+                                <Friend
+                                    nickname={v.nickname}
+                                    introduce={v.introduce}
+                                />
+                            )
+                        })}
+                        <FriendNum>친구 - {friends.length}명</FriendNum>
+                    </>
                 )}
             </Background>
         </>
@@ -212,4 +254,13 @@ const ItemContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+`
+
+const FriendNum = styled.div`
+    width: 800px;
+    font-size: 20px;
+    font-weight: bold;
+    color: ${Colors.Gray500};
+    text-align: center;
+    margin: 20px 0;
 `
