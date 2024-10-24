@@ -5,11 +5,11 @@ import Input from "../components/common/Input"
 import Logo from "../assets/logo"
 import { useNavigate } from "react-router-dom"
 
-function Login() {
+function Signup() {
     const navigate = useNavigate()
 
-    const signupHandler = () => {
-        navigate("/signup")
+    const loginHandler = () => {
+        navigate("/login")
     }
 
     const submitHandler = () => {
@@ -23,10 +23,16 @@ function Login() {
 
                 <LogoContainer>
                     <Logo />
-                    로그인
+                    회원가입
                 </LogoContainer>
 
                 <Form>
+                    <Input
+                        placeholder="닉네임 입력해주세요"
+                        label="닉네임"
+                        type="text"
+                        width={450}
+                    />
                     <Input
                         placeholder="아이디를 입력해주세요"
                         label="아이디"
@@ -39,11 +45,17 @@ function Login() {
                         type="password"
                         width={450}
                     />
+                    <Input
+                        placeholder="비밀번호를 다시 입력해주세요"
+                        label="비밀번호 확인"
+                        type="password"
+                        width={450}
+                    />
 
-                    <SubmitButton onClick={submitHandler}>로그인</SubmitButton>
+                    <SubmitButton onClick={submitHandler}>회원가입</SubmitButton>
                     <Ask>
-                        회원이 아니신가요?{" "}
-                        <Accent onClick={signupHandler}>회원가입</Accent>
+                        이미 회원이신가요?{" "}
+                        <Accent onClick={loginHandler}>로그인</Accent>
                     </Ask>
                 </Form>
             </Background>
@@ -51,11 +63,11 @@ function Login() {
     )
 }
 
-export default Login
+export default Signup
 
 const Background = styled.div`
     width: 100%;
-    height: 100vh;
+
     display: flex;
     justify-content: start;
     align-items: center;
