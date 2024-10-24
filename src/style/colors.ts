@@ -21,6 +21,7 @@ const Colors = {
     Orange200: "#FAD38C",
     Orange100: "#FAE7BE",
     Orange50: "#FAF5EB",
+    Critical: "#DB2C36",
 } as const
 
 export default Colors
