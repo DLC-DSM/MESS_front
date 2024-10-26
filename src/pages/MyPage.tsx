@@ -3,15 +3,22 @@ import Colors from "../style/colors"
 import Header from "../components/common/Header"
 import { MdPerson } from "react-icons/md"
 import { RiPencilFill } from "react-icons/ri"
-import { useState } from "react"
+import { CiSearch } from "react-icons/ci"
+import { ChangeEvent, useState } from "react"
 import RUReady from "../assets/RUReady"
 import Friend from "../components/myPage/Friend"
+import NotFound from "../assets/NotFound"
 
 function MyPage() {
     const [friendList, setFriendList] = useState<Boolean>(false)
     const [addFriend, setAddFriend] = useState<Boolean>(false)
     const [roomList, setRoomList] = useState<Boolean>(false)
     const [addRoom, setAddRoom] = useState<Boolean>(false)
+    const [search, setSearch] = useState<String>("")
+
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value)
+    }
 
     const friendListHandler = () => {
         if (!friendList) {
@@ -70,7 +77,7 @@ function MyPage() {
         },
         {
             nickname: "최정우",
-            introduce: "ByeWorld ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ",
+            introduce: "HelloWorld",
         },
         {
             nickname: "김문지",
@@ -83,6 +90,21 @@ function MyPage() {
         {
             nickname: "감귤",
             introduce: "ㅇㅅㅇ",
+        },
+    ]
+
+    const addFriends = [
+        {
+            nickname: "서지호",
+            introduce: "닉변했습니다",
+        },
+        {
+            nickname: "고양이",
+            introduce: "고양이는 귀여웡",
+        },
+        {
+            nickname: "강아지",
+            introduce: "강아지도 귀여웡",
         },
     ]
 
@@ -105,9 +127,7 @@ function MyPage() {
 
                     <TextContainer>
                         <NickName>서지유</NickName>
-                        <Introduce>
-                            살자 마려운 front-end 개발자입니다
-                        </Introduce>
+                        <Introduce>front-end 개발자입니다</Introduce>
                     </TextContainer>
                 </ProfileContainer>
 
@@ -143,6 +163,43 @@ function MyPage() {
                             )
                         })}
                         <FriendNum>친구 - {friends.length}명</FriendNum>
+                    </>
+                )}
+
+                {addFriend && (
+                    <>
+                        <FriendSearch>친구추가</FriendSearch>
+                        <SearchContainer>
+                            <SearchInput
+                                type="text"
+                                placeholder="친구 닉네임을 검색하세요"
+                                onChange={onChange}
+                            />
+                            <Icon>
+                                <CiSearch />
+                            </Icon>
+                        </SearchContainer>
+
+                        <NotFoundContainer>
+                            <NotFound />
+
+                            <NotFoundText>
+                                다 찾아봤지만... "{search}"라는 이름은 없네요..
+                            </NotFoundText>
+                        </NotFoundContainer>
+
+                        <FriendSearch>
+                            친구 추가를 보낸 친구 - {addFriends.length}명
+                        </FriendSearch>
+                        {addFriends.map((v) => {
+                            return (
+                                <Friend
+                                    type="addfriend"
+                                    introduce={v.introduce}
+                                    nickname={v.nickname}
+                                />
+                            )
+                        })}
                     </>
                 )}
             </Background>
@@ -263,4 +320,70 @@ const FriendNum = styled.div`
     color: ${Colors.Gray500};
     text-align: center;
     margin: 20px 0;
+`
+
+const FriendSearch = styled.div`
+    margin-top: 50px;
+    width: 900px;
+    height: 50px;
+    border-bottom: 1px solid ${Colors.Orange400};
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: ${Colors.Black};
+`
+
+const SearchContainer = styled.div`
+    width: 900px;
+    height: 75px;
+    border-bottom: 1px solid ${Colors.Orange400};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+`
+
+const SearchInput = styled.input`
+    width: 600px;
+    height: 50px;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: ${Colors.Black};
+    outline: none;
+
+    &::placeholder {
+        color: ${Colors.Gray500};
+    }
+`
+
+const Icon = styled.div`
+    position: absolute;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    color: ${Colors.Orange400};
+    font-size: 45px;
+    cursor: pointer;
+`
+
+const NotFoundContainer = styled.div`
+    width: 800px;
+    margin: 50px;
+    position: relative;
+`
+
+const NotFoundText = styled.p`
+    width: 800px;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: ${Colors.Gray500};
 `
