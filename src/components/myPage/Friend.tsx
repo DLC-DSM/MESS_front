@@ -39,6 +39,12 @@ function Friend({ nickname, introduce, type = "friendlist" }: props) {
                             <Delete>거절</Delete>
                         </>
                     )}
+
+                    {type == "room" && (
+                        <>
+                            <Invite>들어가기</Invite>
+                        </>
+                    )}
                 </ButtonContainer>
             </Container>
         </>
@@ -85,7 +91,8 @@ const NickName = styled.p`
 
 const Introduce = styled.p`
     width: 400px;
-    font-size: 20px;
+    margin-top: 5px;
+    font-size: 18px;
     color: ${Colors.Gray500};
     display: flex;
     justify-content: start;
