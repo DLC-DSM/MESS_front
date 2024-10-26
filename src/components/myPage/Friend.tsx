@@ -5,9 +5,10 @@ import { MdPerson } from "react-icons/md"
 interface props {
     nickname: string
     introduce: string
+    type?: string
 }
 
-function Friend({ nickname, introduce }: props) {
+function Friend({ nickname, introduce, type = "friendlist" }: props) {
     let introduceEdit = introduce
         .split("")
         .map((v, i) => (i > 0 && i % 30 == 0 ? v + " " : v))
@@ -25,8 +26,19 @@ function Friend({ nickname, introduce }: props) {
                 </TextContainer>
 
                 <ButtonContainer>
-                    <Invite>방 추가</Invite>
-                    <Delete>삭제</Delete>
+                    {type == "friendlist" && (
+                        <>
+                            <Invite>방 추가</Invite>
+                            <Delete>삭제</Delete>
+                        </>
+                    )}
+
+                    {type == "addfriend" && (
+                        <>
+                            <Invite>수락하기</Invite>
+                            <Delete>거절</Delete>
+                        </>
+                    )}
                 </ButtonContainer>
             </Container>
         </>
