@@ -108,6 +108,37 @@ function MyPage() {
         },
     ]
 
+    const rooms = [
+        {
+            name: "리액트 방에 어서오세요!",
+            introduce: "서지유",
+        },
+        {
+            name: "리액트 방에 어서오세요!",
+            introduce: "서지유",
+        },
+        {
+            name: "리액트 방에 어서오세요!",
+            introduce: "서지유",
+        },
+        {
+            name: "리액트 방에 어서오세요!",
+            introduce: "서지유",
+        },
+        {
+            name: "리액트 방에 어서오세요!",
+            introduce: "서지유",
+        },
+        {
+            name: "리액트 방에 어서오세요!",
+            introduce: "서지유",
+        },
+        {
+            name: "리액트 방에 어서오세요!",
+            introduce: "서지유",
+        },
+    ]
+
     return (
         <>
             <Background>
@@ -200,6 +231,21 @@ function MyPage() {
                                 />
                             )
                         })}
+                    </>
+                )}
+
+                {roomList && (
+                    <>
+                        {rooms.map((v) => {
+                            return (
+                                <Friend
+                                    type="room"
+                                    nickname={v.name}
+                                    introduce={v.introduce}
+                                />
+                            )
+                        })}
+                        <FriendNum>방 목록 - {rooms.length}명</FriendNum>
                     </>
                 )}
             </Background>
