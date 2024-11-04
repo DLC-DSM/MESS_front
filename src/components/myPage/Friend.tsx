@@ -4,15 +4,11 @@ import { MdPerson } from "react-icons/md"
 
 interface props {
     nickname: string
-    introduce: string
+    introduce?: string
     type?: string
 }
 
 function Friend({ nickname, introduce, type = "friendlist" }: props) {
-    let introduceEdit = introduce
-        .split("")
-        .map((v, i) => (i > 0 && i % 30 == 0 ? v + " " : v))
-        .join("")
     return (
         <>
             <Container>
@@ -22,7 +18,16 @@ function Friend({ nickname, introduce, type = "friendlist" }: props) {
 
                 <TextContainer>
                     <NickName>{nickname}</NickName>
-                    <Introduce>{introduceEdit}</Introduce>
+                    {introduce && (
+                        <Introduce>
+                            {introduce
+                                .split("")
+                                .map((v, i) =>
+                                    i > 0 && i % 30 == 0 ? v + " " : v
+                                )
+                                .join("")}
+                        </Introduce>
+                    )}
                 </TextContainer>
 
                 <ButtonContainer>
@@ -43,6 +48,13 @@ function Friend({ nickname, introduce, type = "friendlist" }: props) {
                     {type == "room" && (
                         <>
                             <Invite>들어가기</Invite>
+                        </>
+                    )}
+
+                    {type == "ask" && (
+                        <>
+                            <Invite>수락</Invite>
+                            <Delete>거절</Delete>
                         </>
                     )}
                 </ButtonContainer>
@@ -77,10 +89,11 @@ const ProfileImg = styled.div`
 
 const TextContainer = styled.div`
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: start;
     flex-direction: column;
-    margin-top: 10px;
+    min-height: 50px;
+    margin-top: 5px;
 `
 
 const NickName = styled.p`

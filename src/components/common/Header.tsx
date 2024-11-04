@@ -3,14 +3,25 @@ import Colors from "../../style/colors"
 import Logo from "../../assets/logo"
 import { IoMdPerson } from "react-icons/io"
 import { BsBellFill } from "react-icons/bs"
+import { useNavigate } from "react-router-dom"
 
 function Header() {
+    const navigate = useNavigate()
+
+    const homeHandler = () => {
+        navigate("/home")
+    }
+
+    const alarmHandler = () => {
+        navigate("/alarm")
+    }
+
     return (
         <>
             <Background>
                 <Container>
                     <ButtonContainer>
-                        <LogoWrapper>
+                        <LogoWrapper onClick={homeHandler}>
                             <Logo />
                         </LogoWrapper>
 
@@ -20,7 +31,7 @@ function Header() {
                     </ButtonContainer>
 
                     <IconContainer>
-                        <Alarm>
+                        <Alarm onClick={alarmHandler}>
                             <BsBellFill />
                         </Alarm>
                         <Person>
@@ -57,6 +68,7 @@ const Container = styled.div`
 
 const LogoWrapper = styled.div`
     height: 25px;
+    cursor: pointer;
 `
 
 const ButtonContainer = styled.div`
